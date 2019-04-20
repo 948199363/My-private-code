@@ -4,9 +4,10 @@
 #         self.val = x
 #         self.next = None
 
-#朴素的把链表值存入列表再反向取出来
 
 class Solution(object):
+#朴素的把链表值存入列表再反向取出来
+#内存占用高
     def reverseList(self, head):
         """
         :type head: ListNode
@@ -23,3 +24,14 @@ class Solution(object):
             b.val = a[c-i-1]
             b = b.next
         return head
+        
+#更简洁的迭代方式，rev记录p的前一个节点        
+    def reverseList1(self, head):
+            """
+            :type head: ListNode
+            :rtype: ListNode
+            """
+            p, rev = head, None
+            while p:
+                rev, rev.next, p = p, rev, p.next
+            return rev

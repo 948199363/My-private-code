@@ -1,0 +1,25 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+#朴素的把链表值存入列表再反向取出来
+
+class Solution(object):
+    def reverseList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        a = []
+        b = head
+        while(b != None):
+            a.append(b.val)
+            b = b.next
+        b = head
+        c= len(a)
+        for i in range(c):
+            b.val = a[c-i-1]
+            b = b.next
+        return head

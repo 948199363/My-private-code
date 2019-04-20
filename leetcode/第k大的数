@@ -1,0 +1,19 @@
+class Solution(object):
+    #最简单的方法，排序然后输出，复杂度o(nlogn)
+    def findKthLargest(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        return sorted(nums)[len(nums)-k]
+     #先填满一个大小为k的数组，之后每次输入的数字比k[0]大则代替k[0]并排序。理论上在k远小于num时，时间复杂度为o(n)
+     def findKthLargest1(self, nums, k):
+        a = []
+        for i in nums:
+            if len(a) < k:
+                a.append(i)
+            elif i > a[0]:
+                a[0] = i
+            a = sorted(a)
+        return a[0]

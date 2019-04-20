@@ -1,0 +1,27 @@
+class Solution(object):
+    #取巧的办法，set函数直接去重，然后比较长度
+    def containsDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        set1 = set(nums)
+        if len(set1) == len(nums):
+            return False
+        else:
+            return True
+     #排序然后遍历，还是取巧
+     #不取巧应该是用哈希表，不过可想而知性能不佳
+     def containsDuplicate1(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        nums.sort()
+        pre=None
+        for num in nums:
+            if num==pre:
+                return True
+            else:
+                pre=num
+        return False

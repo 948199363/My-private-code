@@ -1,0 +1,9 @@
+class Solution(object):
+#这题一开始没看懂，因为没给head，后来发现相当于你已经找到了node，直接操作...
+    def deleteNode(self, node):
+        """
+        :type node: ListNode
+        :rtype: void Do not return anything, modify node in-place instead.
+        """
+        node.val = node.next.val
+        node.next = node.next.next

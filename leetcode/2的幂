@@ -1,0 +1,20 @@
+
+class Solution(object):
+#一般做法
+    def isPowerOfTwo(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        if n <= 0:
+            return False
+        while(n>1):
+            if n%2 == 0:
+                n = n/2
+            else:
+                return False
+        return True
+#位运算法，减一与运算之后应为0
+    def isPowerOfTwo1(self, n):
+        if not n: return False
+        return n&(n-1)==0

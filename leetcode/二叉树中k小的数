@@ -1,0 +1,69 @@
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+#迭代方法，中序遍历加个条件判断即可
+class Solution(object):
+    def kthSmallest(self, root, k):
+        """
+        :type root: TreeNode
+        :type k: int
+        :rtype: int
+        """
+        c = 0
+        tmp = []
+        p = root
+        while p or tmp:
+            while p:
+                tmp.append(p)
+                p = p.left
+                
+            p = tmp.pop()
+            c += 1
+            if c==k:
+                return p.val
+            p = p.right
+#递归方法，标准中序
+    def kthSmallest1(self, root, k):
+            """
+            :type root: TreeNode
+            :type k: int
+            :rtype: int
+            """
+            res=[]
+            index=0
+            ans=0
+            def dfs(root):
+                if root==None:
+                    return
+                dfs(root.left)
+                res.append(root.val)
+                dfs(root.right)
+            dfs(root)
+            return res[k-1] 
+#递归，到k提前停止，比前一种好            
+     def kthSmallest2(self, root, k):
+        """
+        :type root: TreeNode
+        :type k: int
+        :rtype: int
+        """
+        return self.find(root, 0, k)[2]
+
+    def find(self, root, count, k):
+        if root is None:
+            return False, count, None
+
+        res = self.find(root.left, count, k)
+        if res[0]:
+            return res
+
+        # res[1]表示左子树的节点数量
+        count = res[1] + 1
+        if count == k:
+            return True, count, root.val
+        return self.find(root.right, count, k)
+                
+            

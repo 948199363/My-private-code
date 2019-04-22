@@ -1,0 +1,27 @@
+#正常写法，通过空格判断每个单词的位置，然后反转字符串
+class Solution(object):
+    def reverseWords(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        i, n = 0, len(s)
+        res = [x for x in s]
+        
+        while i < n:
+            j = i + 1
+            while j < n and s[j] != ' ':
+                j += 1
+
+            l, r = i, j - 1
+            while l < r:
+                res[l], res[r] = res[r], res[l]
+                l += 1
+                r -= 1
+
+            i = j + 1
+
+        return ''.join(res)
+#偷懒可以用map
+    def reverseWords1(self, s):
+        return " ".join(map(lambda w:w[::-1],s.split(" ")))

@@ -1,0 +1,18 @@
+#取个巧，取出来排序再顺序覆盖过去
+class Solution(object):
+    def sortList(self, head):
+        """
+        :type head: ListNode
+        :rtype: ListNode
+        """
+        a = head
+        b = []
+        while(a != None):
+            b.append(a.val)
+            a = a.next
+        c = head
+        b.sort()
+        for i in b:
+            c.val = i
+            c = c.next
+        return head

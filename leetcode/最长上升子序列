@@ -1,3 +1,4 @@
+#经典动规的思路
 class Solution(object):
     def lengthOfLIS(self, nums):
         """

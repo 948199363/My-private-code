@@ -1,0 +1,17 @@
+class Solution(object):
+    def lengthOfLIS(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if len(nums) < 2:
+            return len(nums)
+        a = []
+        for i in nums:
+            tmin = 1
+            for j in range(len(a)):
+                if nums[j] < i:
+                    tmin = max(a[j]+1,tmin)
+            a.append(tmin)
+        print(a)
+        return max(a)
